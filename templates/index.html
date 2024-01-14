@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Password Remover</title>
+</head>
+<body>
+    <h1>PDF Password Remover</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color: {% if 'error' in message %}red{% else %}green{% endif %};">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="pdf_file">Select PDF File:</label>
+        <input type="file" name="pdf_file" accept=".pdf" required><br>
+
+        <label for="pdf_password">Enter PDF Password:</label>
+        <input type="password" name="pdf_password" required><br>
+
+        <input type="submit" value="Remove Password">
+    </form>
+</body>
+</html>
